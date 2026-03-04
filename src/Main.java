@@ -16,18 +16,12 @@ public class Main {
         //PRIMEIRA MÚSICA
 
         Musica musica = new Musica("Legend", "Drake", 2.5);
-
-        musica.curtir(1000);
-        musica.reproduzir(2000);
-        musica.exibeFichaTecnica();
+        musica.processarAudio(musica, 1000, 400);
 
         //SEGUNDA MÚSICA
 
         Musica musica2 = new Musica("Yebba's Heartbreak", "Drake", 2.5);
-
-        musica2.curtir(200);
-        musica2.reproduzir(2000);
-        musica2.exibeFichaTecnica();
+        musica2.processarAudio(musica2, 2000, 1243);
 
         //PRIMEIRO PODCAST
 
@@ -43,12 +37,8 @@ public class Main {
         podpah.adicionarEpisodio(episodio1);
         podpah.adicionarEpisodio(episodio2);
         podpah.listarEpisodios();
-        episodio1.curtir(100);
-        episodio2.curtir(120);
-        episodio1.reproduzir(100);
-        episodio2.reproduzir(200);
-
-        podpah.exibeFichaTecnica();
+        podpah.processarAudio(episodio1, 3000, 3000);
+        podpah.processarAudio(episodio2, 2576, 1215);
 
 
         //RANKEADOR
@@ -66,6 +56,7 @@ public class Main {
         rankeador.listaRanking();
 
     }
+
 }
 
 

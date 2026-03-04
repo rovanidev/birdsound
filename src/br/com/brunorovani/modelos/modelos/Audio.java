@@ -9,17 +9,20 @@ public class Audio {
 
     public void exibeFichaTecnica() {
         System.out.println("\nTítulo: " + titulo);
-        System.out.println("Duração: " + getDuracao());
+        System.out.println("Duração: " + duracao);
         System.out.println("Reproduções:  " + totalDeReproducoes);
         System.out.println("Curtidas: " + totalDeCurtidas);
     }
 
+    public void processarAudio(Audio audio, int totalDeReproducoes, int totalDeCurtidas) {
+        audio.curtir(totalDeCurtidas);
+        audio.reproduzir(totalDeReproducoes);
+        audio.exibeFichaTecnica();
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
-    //Utilizo este setter na main
 
     public void setDuracao(double duracao) {
         this.duracao = duracao;
@@ -29,44 +32,24 @@ public class Audio {
         return duracao;
     }
 
-    //Utilizo este getter no classificador
-
     public int getTotalDeReproducoes() {
         return totalDeReproducoes;
     }
 
-    //Utilizo este setter no classificador
-
-    public void setTotalDeReproducoes(int totalDeReproducoes) {
-        this.totalDeReproducoes = totalDeReproducoes;
-    }
-
-    //Utilizo este getter no classificador
-
     public int getTotalDeCurtidas() {
         return totalDeCurtidas;
-    }
-
-    //Utilizo este setter no classificador
-
-    public void setClassificacao(String classificacao) {
-        this.classificacao = classificacao;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-//Método para curtir
-
     public int curtir(double curtida) {
      return totalDeCurtidas += curtida;
-    }
-
-    //Método para reproduzir
+    } //Metodo para curtir audios.
 
     public int reproduzir(double rep) {
         return totalDeReproducoes += rep;
-    }
+    }//Metodo para reproduzir audios.
 
 }

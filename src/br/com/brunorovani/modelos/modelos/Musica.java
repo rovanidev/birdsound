@@ -11,13 +11,9 @@ public class Musica extends Audio implements Classificavel {
         this.setDuracao(duracao);
     }
 
-    public void setArtista(String artista) {
-        this.artista = artista;
-    }
-
     @Override
     public void exibeFichaTecnica() {
-        super.exibeFichaTecnica(); //Com isto utilizo o que já existe na classe mãe
+        super.exibeFichaTecnica(); //Com isto utilizo o que já existe na superclasse Audio.
         System.out.println("Artista: " + artista);
         System.out.printf("Taxa de engajamento: %.2f%%\n", getClassificacao());
     }

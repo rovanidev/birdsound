@@ -4,25 +4,30 @@ import br.com.brunorovani.modelos.servicos.Classificavel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Podcast extends Audio implements Classificavel{
+public class Podcast implements Classificavel{
+
+    private String titulo;
 
     private List<Episodio> episodios = new ArrayList<>();
 
     public Podcast(String titulo) {
-        setTitulo(titulo);
+        this.titulo = titulo;
     }
 
     public String Podcast() {
-        return getTitulo();
+        return titulo;
     }
 
-    public void adicionarEpisodio(Episodio episodio) {
-        episodios.add(episodio);
+    public void adicionarEpisodio(Classificavel ep) {
+        if(ep instanceof Episodio) {
+            Episodio episodio = (Episodio) ep;
+            episodios.add(episodio);
+        }
     }
 
 
     public void listarEpisodios() {
-            System.out.println("\nEpisódios de: " + getTitulo());
+            System.out.println("\nEpisódios de: " + titulo);
         for (Episodio ep : episodios) {
             System.out.println(ep);
         }
@@ -63,12 +68,11 @@ public class Podcast extends Audio implements Classificavel{
 
     }
 
-    @Override
     public void exibeFichaTecnica() {
         System.out.println("Total de Episódios: " + totalEpisodios());
         System.out.println("Total de Curtidas dos ep's: " + totalCurtidasDosEpisodios());
         System.out.println("Total de Reproduções: " + totalReproducoesDosEpisodios());
-        System.out.printf("Taxa de engajamento do %s: %.2f%%%n", getTitulo(), getClassificacao());
+        System.out.printf("Taxa de engajamento do %s: %.2f%%%n", titulo, getClassificacao());
     } //Ficha tecnica individual de cada obj Podcast.
 
 }

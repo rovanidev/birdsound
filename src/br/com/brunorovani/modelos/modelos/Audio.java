@@ -1,6 +1,8 @@
 package br.com.brunorovani.modelos.modelos;
 
-public class Audio {
+import br.com.brunorovani.modelos.servicos.Classificavel;
+
+public class Audio implements Classificavel {
     private String titulo;
     private double duracao;
     private int totalDeReproducoes;
@@ -13,12 +15,13 @@ public class Audio {
         System.out.println("Reproduções:  " + totalDeReproducoes);
         System.out.println("Curtidas: " + totalDeCurtidas);
     }
+//
+//    public void processarAudio(Audio audio, int totalDeReproducoes, int totalDeCurtidas) {
+//        audio.curtir(totalDeCurtidas);
+//        audio.reproduzir(totalDeReproducoes);
+//        audio.exibeFichaTecnica();
+//    }
 
-    public void processarAudio(Audio audio, int totalDeReproducoes, int totalDeCurtidas) {
-        audio.curtir(totalDeCurtidas);
-        audio.reproduzir(totalDeReproducoes);
-        audio.exibeFichaTecnica();
-    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -52,4 +55,9 @@ public class Audio {
         return totalDeReproducoes += rep;
     }//Metodo para reproduzir audios.
 
+
+    @Override
+    public double getClassificacao() {
+        return 0;
+    }
 }

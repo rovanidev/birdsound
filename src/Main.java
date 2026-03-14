@@ -1,10 +1,15 @@
 import br.com.brunorovani.modelos.modelos.Audio;
 import br.com.brunorovani.modelos.modelos.Episodio;
 import br.com.brunorovani.modelos.modelos.Podcast;
+import br.com.brunorovani.modelos.servicos.Classificavel;
+import br.com.brunorovani.modelos.servicos.Processador;
 import br.com.brunorovani.modelos.servicos.Rankeador;
 import br.com.brunorovani.modelos.modelos.Musica;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -13,45 +18,56 @@ public class Main {
 
         Audio audio = new Audio();
 
-        //PRIMEIRA MÚSICA
+        List<Audio> biblioteca = new ArrayList<>();
 
-        Musica musica = new Musica("Legend", "Drake", 2.5);
-        musica.processarAudio(musica, 1000, 400);
+        //ADICIONANDO MUSICAS NA BIBLIOTECA
 
-        //SEGUNDA MÚSICA
+        biblioteca.add(new Musica("Legend", "Drake", 2.5));
+        biblioteca.add(new Musica("Yebba's Heartbreak", "Drake", 2.5));
 
-        Musica musica2 = new Musica("Yebba's Heartbreak", "Drake", 2.5);
-        musica2.processarAudio(musica2, 2000, 1243);
-
-        //PRIMEIRO PODCAST
+        //PODCAST
 
         Podcast podpah = new Podcast("Podpah");
 
-        Episodio episodio1 = new Episodio("Com os melhores do mundo",
+        //ADICIONANDO EPISODIOS DE PODCAST NA BIBLIOTECA
+
+        biblioteca.add(new Episodio("Com os melhores do mundo",
                 Arrays.asList("Neymar", "Messi"), 180
-        );
-        Episodio episodio2 = new Episodio("Os feras do Rap",
+        ));
+
+        biblioteca.add(new Episodio("Os feras do Rap",
                 Arrays.asList("Mano Brown", "Emicida"), 160
-        );
+        ));
 
-        podpah.adicionarEpisodio(episodio1);
-        podpah.adicionarEpisodio(episodio2);
+        podpah.adicionarEpisodio(biblioteca.get(2));
+        podpah.adicionarEpisodio(biblioteca.get(3));
         podpah.listarEpisodios();
-        podpah.processarAudio(episodio1, 3000, 3000);
-        podpah.processarAudio(episodio2, 2576, 1215);
 
+        //Processa Audio
+
+        Processador processador = new Processador();
+
+        //Músicas
+
+        processador.processarAudio(biblioteca.get(0), 1000, 899);
+        processador.processarAudio(biblioteca.get(1), 1000, 899);
+
+        //Podcasts
+
+        processador.processarAudio(biblioteca.get(2), 3000, 3000);
+        processador.processarAudio(biblioteca.get(3), 2576, 1215);
 
         //RANKEADOR
 
         Rankeador rankeador = new Rankeador();
 
-        rankeador.adiciona(musica);
-        rankeador.adiciona(musica2);
-        rankeador.adiciona(episodio1);
-        rankeador.adiciona(episodio2);
+        rankeador.adiciona(biblioteca.get(0));
+        rankeador.adiciona(biblioteca.get(1));
+        rankeador.adiciona(biblioteca.get(2));
+        rankeador.adiciona(biblioteca.get(3));
 
 
-        System.out.println("\nBusca: (" + musica.getTitulo() + ") - " + rankeador.buscaNoRank(musica) + "° Lugar");
+        System.out.println("\nBusca: (" + biblioteca.get(0) + ") - " + rankeador.buscaNoRank((Musica) biblioteca.get(0)) + "° Lugar");
 
         rankeador.listaRanking();
 

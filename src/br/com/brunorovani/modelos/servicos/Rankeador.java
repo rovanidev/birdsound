@@ -1,5 +1,8 @@
 package br.com.brunorovani.modelos.servicos;
 
+import br.com.brunorovani.modelos.modelos.Episodio;
+import br.com.brunorovani.modelos.modelos.Musica;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -9,6 +12,7 @@ public class Rankeador {
     private List<Classificavel> itens = new ArrayList<>();
 
     public void adiciona(Classificavel item) {
+
         itens.add(item);
     }
 
@@ -23,7 +27,7 @@ public class Rankeador {
     }
 
     public void listaRanking() {
-        System.out.println("\nRanking: ");
+        System.out.println("\nRanking dos mais ouvidos: ");
             for (int i = 0; i < itens.size() ; i++) {
                 System.out.println(i + 1 + "° " + itens.get(i));
 

@@ -18,20 +18,28 @@ public class Rankeador {
 
     public int buscaNoRank(Classificavel item) {
         if(item.getClassificacao() == 0) {
-            System.out.println("Falha na busca!");
+            return -1;
         }
 
         itens.sort(Comparator.comparing(Classificavel::getClassificacao).reversed());
-
         return itens.indexOf(item) + 1;
+
     }
+
 
     public void listaRanking() {
         System.out.println("\nRanking dos mais ouvidos: ");
-            for (int i = 0; i < itens.size() ; i++) {
-                System.out.println(i + 1 + "° " + itens.get(i));
+        int posicaoExibida = 1;
 
+        for (int i = 0; i < itens.size(); i++) {
+            Classificavel item = itens.get(i);
+
+            if (item.getClassificacao() == 0) {
+                continue;
+            }
+
+            System.out.println(posicaoExibida + "° " + item);
+            posicaoExibida++;
         }
     }
-
 }

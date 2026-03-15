@@ -20,18 +20,11 @@ public class Musica extends Audio implements Classificavel {
 
     @Override
     public double getClassificacao() {
-
-        if(getTotalDeReproducoes() == 0) {
-            System.out.println("Não foi possível calcular a taxa de engajamento, pois a música ainda não foi reproduzida!");
-            return 0;
-        } else if(getTotalDeCurtidas() > getTotalDeReproducoes()) {
-            System.out.println("Não foi possível calcular a taxa de engajamento, pois é impossível a música ter mais curtidas do que reproduções");
+        if(getTotalDeReproducoes() == 0 || getTotalDeCurtidas() > getTotalDeReproducoes()) {
             return 0;
         }
 
-        double taxaEngajamento = (double) getTotalDeCurtidas()/getTotalDeReproducoes();
-        return taxaEngajamento * 100;
-
+        return ((double) getTotalDeCurtidas() / getTotalDeReproducoes()) * 100;
     }
 
     @Override
